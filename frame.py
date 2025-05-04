@@ -19,6 +19,7 @@ class Frame():
         self.gray_matrix = self.to_gray_scale()
 
         self.matrix_to_ascii()
+        self.print()
 
         pyplot.imshow(self.gray_matrix, cmap="grey")
         pyplot.show()
@@ -33,7 +34,7 @@ class Frame():
         return gray
     
     def resize(self):
-        self.new_size = (50*int(self.aspect_ratio),50)
+        self.new_size = (90*int(self.aspect_ratio),90)
         self.image = self.image.resize(self.new_size)
 
     def matrix_to_ascii(self):
@@ -42,7 +43,7 @@ class Frame():
             for element in range(len(self.gray_matrix[row])):
                 if self.gray_matrix[row][element] == 255.0:
                     self.ascii_matrix[row][element] = " "
-                if self.gray_matrix[row][element] == 0.0 or self.gray_matrix[row][element] == 0:
+                if self.gray_matrix[row][element] == 0.0:
                     self.ascii_matrix[row][element] = "@"
                 else:
                     if self.gray_matrix[row][element] < 255.0 and self.gray_matrix[row][element] > 225.0:
@@ -62,12 +63,13 @@ class Frame():
                     if self.gray_matrix[row][element] < 15.0 and self.gray_matrix[row][element] > 0.0:
                         self.ascii_matrix[row][element] = "%"
     
+    def print(self):
+        for row in self.ascii_matrix:
+            print(" ".join(map(str,row)))
+
                     
     
    
-
-
-
 
 
 
