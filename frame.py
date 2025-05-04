@@ -31,11 +31,13 @@ class Frame():
         return gray
     
     def resize(self):
+        self.size_tuple = (self.width, self.height)
         if self.height > 600:
             factor = 600/self.height
             self.height = int(self.height*factor)
             self.width = int(self.width*factor)
             self.size_tuple = (self.width, self.height)
+        
         self.image = self.image.resize(self.size_tuple)
 
     def matrix_to_ascii(self):

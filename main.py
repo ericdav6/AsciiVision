@@ -2,6 +2,6 @@ from frame import Frame
 
 def main():
 
-    frame = Frame("testImages/636422963545309889-USATSI-9103998.jpg.webp")
+    frame = Frame("testImages/d24bbe79387549086d159aa4462bf4c9.jpg")
 
 main()
