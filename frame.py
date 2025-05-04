@@ -14,9 +14,9 @@ class Frame():
         self.resize()
 
 
-
         self.image_matrix = numpy.array(self.image)
         self.gray_matrix = self.to_gray_scale()
+        
 
         self.matrix_to_ascii()
         self.print()
@@ -25,20 +25,21 @@ class Frame():
         pyplot.show()
 
 
-
-
-
     def to_gray_scale(self):
         r, g, b = self.image_matrix[:,:,0], self.image_matrix[:,:,1], self.image_matrix[:,:,2]
         gray = r*0.299 + g*0.587 + b*0.114
         return gray
     
     def resize(self):
-        self.new_size = (90*int(self.aspect_ratio),90)
-        self.image = self.image.resize(self.new_size)
+        if self.height > 600:
+            factor = 600/self.height
+            self.height = int(self.height*factor)
+            self.width = int(self.width*factor)
+            self.size_tuple = (self.width, self.height)
+        self.image = self.image.resize(self.size_tuple)
 
     def matrix_to_ascii(self):
-        self.ascii_matrix = [[0 for _ in range(self.new_size[1])] for _ in range(self.new_size[1])]
+        self.ascii_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
         for row in range(len(self.gray_matrix)):
             for element in range(len(self.gray_matrix[row])):
                 if self.gray_matrix[row][element] == 255.0:
