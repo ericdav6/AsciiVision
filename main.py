@@ -1,7 +1,11 @@
 from frame import Frame
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
 
 def main():
+    tk.Tk().withdraw() 
+    file_path = askopenfilename()
 
-    frame = Frame("testImages/d24bbe79387549086d159aa4462bf4c9.jpg")
+    frame = Frame(file_path)
 
 main()
