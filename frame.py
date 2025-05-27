@@ -69,6 +69,10 @@ class Frame():
     def print(self):
         for row in self.ascii_matrix:
             print(" ".join(map(str,row)))
+    
+
+
+
 
                     
     
